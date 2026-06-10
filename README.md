@@ -7,7 +7,7 @@ This repository contains four A4 LaTeX CVs built from one factual source:
 - [German single-column CV](dist/ashish-rana-single-column-cv-de.pdf)
 - [German dual-column CV](dist/ashish-rana-dual-column-cv-de.pdf)
 
-The dual-column layout includes the active profile photograph. The single-column layout is text-only. Both layouts render the same active CV entries.
+The dual-column layout includes the active profile photograph and colored visual structure. The single-column layout is a text-only, black-and-white CV derived from `sb2nov/resume`, with no photograph, icons, timeline, tags, or decorative color. Both layouts render the same active CV entries.
 
 ## English Previews
 
@@ -51,6 +51,7 @@ dual-column-cv/
   english/                English entry point and sections
   german/                 German entry point and sections
 single-column-cv/
+  shared/sb2nov-cv.sty   minimalist black single-column style
   english/cv.tex          text-only English CV
   german/cv.tex           text-only German CV
 dist/                     four generated PDFs

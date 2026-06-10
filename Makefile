@@ -51,14 +51,14 @@ $(DUAL_DE_PDF): FORCE dual-column-cv/german/cv.tex dual-column-cv/german/section
 	cd dual-column-cv/german && TEXINPUTS="../shared//:" $(LATEXMK) -xelatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=../../$(BUILD_DIR)/dual-de cv.tex
 	cp $(BUILD_DIR)/dual-de/cv.pdf $@
 
-$(SINGLE_EN_PDF): FORCE single-column-cv/english/cv.tex dual-column-cv/english/sections/*.tex
+$(SINGLE_EN_PDF): FORCE single-column-cv/english/cv.tex single-column-cv/shared/sb2nov-cv.sty dual-column-cv/english/sections/*.tex
 	@mkdir -p $(BUILD_DIR)/single-en $(DIST_DIR)
-	cd single-column-cv/english && TEXINPUTS="../../dual-column-cv/shared//:" $(LATEXMK) -xelatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=../../$(BUILD_DIR)/single-en cv.tex
+	cd single-column-cv/english && TEXINPUTS="../shared//:" $(LATEXMK) -xelatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=../../$(BUILD_DIR)/single-en cv.tex
 	cp $(BUILD_DIR)/single-en/cv.pdf $@
 
-$(SINGLE_DE_PDF): FORCE single-column-cv/german/cv.tex dual-column-cv/german/sections/*.tex
+$(SINGLE_DE_PDF): FORCE single-column-cv/german/cv.tex single-column-cv/shared/sb2nov-cv.sty dual-column-cv/german/sections/*.tex
 	@mkdir -p $(BUILD_DIR)/single-de $(DIST_DIR)
-	cd single-column-cv/german && TEXINPUTS="../../dual-column-cv/shared//:" $(LATEXMK) -xelatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=../../$(BUILD_DIR)/single-de cv.tex
+	cd single-column-cv/german && TEXINPUTS="../shared//:" $(LATEXMK) -xelatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=../../$(BUILD_DIR)/single-de cv.tex
 	cp $(BUILD_DIR)/single-de/cv.pdf $@
 
 define preview_rules
