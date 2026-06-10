@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{babel}
+\usepackage[margin=1.45cm]{geometry}
+\usepackage{fontspec}
+\newcommand{\fontawesomepath}{../../dual-column-cv/shared/fonts/}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+
+\setmainfont{SourceSansPro-Light}[
+  Path = ../../dual-column-cv/shared/fonts/,
+  BoldFont = SourceSansPro-Regular,
+  ItalicFont = SourceSansPro-LightIt
+]
+\definecolor{accentcolor}{HTML}{000066}
+\definecolor{darkGrey}{HTML}{777777}
+\hypersetup{colorlinks=true,urlcolor=accentcolor,linkcolor=accentcolor}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{leftmargin=1.5em,nosep,label=\textcolor{accentcolor}{\faAngleRight}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\textsc{\today}}
+\fancyfoot[C]{\textsc{Signature: Ashish Rana}}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\sectionTitle}[2]{\section*{\textcolor{accentcolor}{#2\enspace\MakeUppercase{#1}}}}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\color{accentcolor}\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\newenvironment{scholarship}{\begin{longtable}{>{\raggedleft\arraybackslash}p{3.2cm}p{\dimexpr\linewidth-3.6cm}}}{\end{longtable}}
+\newcommand{\scholarshipentry}[2]{\textbf{#1} & #2\\[3pt]}
+\newenvironment{experiences}{\begin{longtable}{>{\raggedleft\arraybackslash}p{2.5cm}|p{\dimexpr\linewidth-2.9cm}}}{\end{longtable}}
+\newcommand{\experience}[7]{%
+  \textbf{#1} & \textbf{#2, #3, #4}\\*
+  \textbf{#5} & #6\\*
+  & \footnotesize{\foreach \n in {#7}{\cvtag{\n}}}\\[5pt]
+}
+\newcommand{\emptySeparator}{}
+\newenvironment{projects}{\begin{longtable}{p{\linewidth}}}{\end{longtable}}
+\newcommand{\project}[5]{%
+  \textbf{#1}\hfill\textsc{#2}\\
+  #3\\
+  #4\\[-1pt]
+  \footnotesize{\foreach \n in {#5}{\cvtag{\n}}}\\[8pt]
+}
+\newcommand{\cvtag}[1]{\tikz[baseline]\node[anchor=base,draw=darkGrey!70,rounded corners=0.5ex,inner xsep=0.8ex,inner ysep=0.4ex,text height=1.3ex,text depth=.25ex]{#1};}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{accentcolor}{#1}\hspace{0.4em}\href{#2}{#3}}}
+\newcommand{\website}[2]{\sociallink{\faExternalLink}{#1}{#2}\hspace{0.8em}}
+\newenvironment{referees}{}{}
+\newcommand{\referee}[4]{\textbf{#1}, \textit{#2}, #3\hfill\href{mailto:#4}{#4}\par}
+\newenvironment{skills}{}{}
+\newcommand{\skill}[2]{\textbf{#1}\par}
+\newcommand{\twocolumnsection}[2]{#1\medskip#2}
+
+\begin{document}
+\begin{center}
+  {\Huge\bfseries\textcolor{accentcolor}{Ashish Rana}}\\[2pt]
+  {\large\bfseries M.Sc. Data Science, 4+ Years Data Science and Research Experience}\\[7pt]
+  \href{https://www.linkedin.com/in/ashishrana160796}{linkedin.com/in/ashishrana160796}
+  \quad\href{https://github.com/ashishrana160796}{github.com/ashishrana160796}
+  \quad\href{https://github.com/arana-initiatives}{github.com/arana-initiatives}\\
+  +4917625940838
+  \quad\href{mailto:prod.ashish.rana@gmail.com}{prod.ashish.rana@gmail.com}\\
+  Wohnung 402, Marianne Cohn Strasse 8a, 68167 Mannheim, Germany\\
+  \href{https://scholar.google.com/citations?user=5XxfLlIAAAAJ}{scholar.google.com/citations?user=5XxfLlIAAAAJ}
+\end{center}
+
+\input{../../dual-column-cv/english/sections/section_headline}
+\input{../../dual-column-cv/english/sections/section_scolarite}
+\input{../../dual-column-cv/english/sections/section_experience_short}
+\input{../../dual-column-cv/english/sections/section_publications}
+\input{../../dual-column-cv/english/sections/section_projets}
+\input{../../dual-column-cv/english/sections/section_references}
+\input{../../dual-column-cv/english/sections/section_languages}
+\end{document}

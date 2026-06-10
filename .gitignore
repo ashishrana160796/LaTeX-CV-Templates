@@ -239,6 +239,21 @@ pythontex-files-*/
 # Latexian
 TSWLatexianTemp*
 
+# Centralized local build output. Final PDFs in dist/ and previews in
+# assets/previews/ are intentionally tracked.
+build/
+
+# Editor and operating-system temporary files.
+*~
+*.bak
+*.swp
+*.swo
+.DS_Store
+
+# Temporary PDF image conversion files.
+*-ppm.*
+*-page.tmp.*
+
 ## Editors:
 # WinEdt
 *.bak
@@ -282,4 +297,3 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
-

@@ -1,0 +1,15 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fontawesome}[2016/05/15 v4.6.3.1 bundled font awesome icons]
+
+\RequirePackage{fontspec}
+\providecommand{\fontawesomepath}{../shared/fonts/}
+\newcommand*{\faicon}[1]{{\csname faicon@#1\endcsname}}
+\input{fontawesomesymbols-generic.tex}
+\newfontfamily{\FA}[Path=\fontawesomepath]{FontAwesome.otf}
+\input{fontawesomesymbols-xeluatex.tex}
+
+\renewcommand{\faHourglass}[1][]{%
+  \faicon{hourglass\if\relax\detokenize{#1}\relax\else-#1\fi}}
+\renewcommand{\faBattery}[1][4]{%
+  \faicon{battery-#1}}
+\endinput

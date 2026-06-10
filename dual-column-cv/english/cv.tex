@@ -1,0 +1,57 @@
+\documentclass[localFont,alternative]{yaac-another-awesome-cv}
+\usepackage[english]{babel}
+
+\name{Ashish}{Rana}    %% Add your name with the two brackets.
+%% Note: The case of the alphabets does decide the font size in the CV.
+% \tagline{Research Engineer, NEC Laboratories Heidelberg}    %% Add your professional designation within the bracket.
+\tagline{M.Sc. Data Science, 4+ Years Data Science and Research Experience}    %% Add your professional designation within the bracket.s
+\photo{2.5cm}{../shared/new-profile-picture-ashish-rana}    %% Add the profile picture with/without the format extension.
+\socialinfo{
+	\linkedin{ashishrana160796}    %% Add your LinkedIn profile extension here.
+	\github{ashishrana160796}\\    %% Add your GitHub profile extension here.
+	\github{arana-initiatives}    %% Add your Portfolio work link here.
+	\smartphone{+4917625940838}    %% Add your cell number within the brackets.
+	\email{prod.ashish.rana@gmail.com}\\    %% Add your professional email id here. Yes, professional one!!
+	%% Comment the latex line below by adding '%%' before the latex code in case of a job application. As address info.
+	%% is optional in many job application CVs.
+	\address{Wohnung 402, Marianne Cohn Strasse 8a, 68167 Mannheim, Germany}\\    %% Add your correspondence address with the bracket.
+    %% Keep the above address in case of masters application.	
+    \infos{scholar.google.com/citations?user=5XxfLlIAAAAJ}
+}
+
+\begin{document}
+	\makecvheader
+	\makecvfooter
+	    %% \selectlanguage{english}\today    %% latex tag for selecting the language of CV.
+		{\textsc{\today}} 
+		{\textsc{Signature: Ashish Rana}}
+		{\thepage}
+    
+    %% \input{} adds in different content sections to the final CV layout.
+    
+    %% Content of below section is not present as headline paragraph is often not found effective in a CV.
+	\input{sections/section_headline}    %% headline section content, checkout `section_headline.tex` file for editing content of this section.
+	\input{sections/section_scolarite}    % education section, checkout `section_scolarite.tex` file for editing content of this section.
+	
+	\input{sections/section_experience_short}    % experience section content, checkout `section_experience_short.tex` file for editing content of this section.
+	%\input{sections/section_languages}
+	% \input{sections/section_references}
+	\newpage
+    \input{sections/section_publications}    % publications & presentation section, checkout `section_publications.tex` file for editing content of this section.
+    % \input{sections/section_references}
+    % \input{sections/section_co_curriculars}
+    \newpage
+	\input{sections/section_projets}    % selected projects section, checkout `section_projets.tex` file for editing content of this section.
+	% \input{sections/section_competences}
+	% \input{sections/section_achievements}    % achievement section, checkout `section_achievements.tex` file for editing content of this section.
+	%% \input{sections/section_co_curriculars}    % co-currlculars section,  checkout `section_co_curriculars.tex` file for editing content of this section.
+	\input{sections/section_references}    % references section,  checkout `section_references.tex` file for editing content of this section.
+    \input{sections/section_languages}
+	%%
+	%%
+	%% Additional Information, in my opinion doesn't add value in CV.
+	%% Instead traits specified below should get reflected from above added data.
+	%% \input{section_competences}    % section compétence
+	%% \input{section_langues}    % Section langues
+	%% \input{section_interets}    % extra-curricular section
+\end{document}

@@ -1,29 +1,133 @@
-## Resume and Curriculum vitae Iterations for a human: Ashish Rana
+# Ashish Rana CV Templates
 
-This repository contains single column resume and two column CV latex code with necessary comments to get you started with your resume/CV development work for job/masters application. Also, I have provided the links to awesome project repositories that originally developed these projects. My contribution with this repository is to provide assistive comments and instructions. So, that you can get started with your resume building process pretty fast.
+This repository contains four A4 LaTeX CVs built from one factual source:
 
-The latex code is _Unlicensed_ as it's completely borrowed from the below referenced repository with minor practical changes in the latex code for my use.
+- [English single-column CV](dist/ashish-rana-single-column-cv-en.pdf)
+- [English dual-column CV](dist/ashish-rana-dual-column-cv-en.pdf)
+- [German single-column CV](dist/ashish-rana-single-column-cv-de.pdf)
+- [German dual-column CV](dist/ashish-rana-dual-column-cv-de.pdf)
 
-<p align="center">
-  <img src="assets/one-page-resume.png" width="256" />
-  <img src="assets/dual-column-cv-one.png" width="256" /> 
-  <img src="assets/dual-column-cv-two.png" width="256" /><br/>	
-  <b><em>Left:</em></b> single page & single column resume, <b><em>Center & Right:</em></b> dual column curriculum vitae
-</p> 
+The dual-column layout includes the active profile photograph. The single-column layout is text-only. Both layouts render the same active CV entries.
 
-## Original Latex code Credits
+## English Previews
 
-I have altered the code as per my requirements and have added comments in latex code as well for more simple editing experience. But, in case you are interested in working with the original latex source code.
+<table>
+  <tr>
+    <th>Single-column CV</th>
+    <th>Dual-column CV</th>
+  </tr>
+  <tr>
+    <td><img src="assets/previews/single-column-cv-en-page-1.png" width="390" alt="English single-column CV page 1"></td>
+    <td><img src="assets/previews/dual-column-cv-en-page-1.png" width="390" alt="English dual-column CV page 1"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/previews/single-column-cv-en-page-2.png" width="390" alt="English single-column CV page 2"></td>
+    <td><img src="assets/previews/dual-column-cv-en-page-2.png" width="390" alt="English dual-column CV page 2"></td>
+  </tr>
+</table>
 
-* ![@sb2nov's single column resume repository](https://github.com/sb2nov/resume) for latex code in single column resume format. It's taken from original latex format code written by ![@sb2nov](https://github.com/sb2nov).
-* ![@darwiin's two column resume repository](https://github.com/darwiin/yaac-another-awesome-cv) for latex code in two column cv format. It's taken from original latex format code written by ![darwiin](https://github.com/sb2nov).
+## Deutsche Versionen
 
-## Getting quickly started with latex resume editing
+<table>
+  <tr>
+    <th>Einspaltiger Lebenslauf</th>
+    <th>Zweispaltiger Lebenslauf</th>
+  </tr>
+  <tr>
+    <td><img src="assets/previews/single-column-cv-de-page-1.png" width="390" alt="Deutscher einspaltiger Lebenslauf, Seite 1"></td>
+    <td><img src="assets/previews/dual-column-cv-de-page-1.png" width="390" alt="Deutscher zweispaltiger Lebenslauf, Seite 1"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/previews/single-column-cv-de-page-2.png" width="390" alt="Deutscher einspaltiger Lebenslauf, Seite 2"></td>
+    <td><img src="assets/previews/dual-column-cv-de-page-2.png" width="390" alt="Deutscher zweispaltiger Lebenslauf, Seite 2"></td>
+  </tr>
+</table>
 
-Instead of setting up the whole latex setup and spending on installing all required packages. First, login to the ![overleaf](overleaf.com/) website and then upload all the files in a newly created blank project. Overleaf is a very easy to use website for latex project development and would save a lot of time while working on any latex projects in future as well.
+## Project Structure
 
-Second, for single column latex code resume open the `.tex` file containing the latex resume code and follow along the base comments for editing your resume.
+```text
+dual-column-cv/
+  shared/                 class, fonts, and active profile photograph
+  english/                English entry point and sections
+  german/                 German entry point and sections
+single-column-cv/
+  english/cv.tex          text-only English CV
+  german/cv.tex           text-only German CV
+dist/                     four generated PDFs
+assets/previews/          pages 1 and 2 rendered as PNG
+docs/content-validation.md
+Makefile
+```
 
-And for editing your two column CV, open the project on overleaf with all the uploaded files & edit the respective `.tex` files for each section of the CV with the assistive comments provided in each section file for reference.
+The single-column entry points reuse the corresponding dual-column section files through layout-compatible commands. This keeps the active content inventory synchronized across layouts. Disabled `\iffalse` material stays in the section sources and is not rendered.
 
-__Note:__ The sections in both latex resume and two column CV are specially arranged with respect to their text block sizes they occupy. Any change in the written text size or additional list point entry would disrupt the linear structure of resume/CV adding extra unnecessary whitespaces. Please, edit the section text and bullet points keeping this restructuring change in mind.
+## Build Locally
+
+### Install the tools on macOS
+
+```bash
+brew install --cask mactex-no-gui
+brew install poppler
+```
+
+If the TeX commands are not found after installation, add MacTeX to your shell path:
+
+```bash
+echo 'export PATH="/Library/TeX/texbin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Confirm the required tools:
+
+```bash
+xelatex --version
+latexmk --version
+pdftoppm -v
+pdftotext -v
+```
+
+Then run:
+
+```bash
+make
+```
+
+### What the Makefile does
+
+| Command | Backend behavior |
+| --- | --- |
+| `make` | Builds PDFs, renders previews, and runs validation. |
+| `make pdfs` | Runs `latexmk` with XeLaTeX for all four entry points, writes auxiliary output under `build/`, and copies stable PDFs to `dist/`. |
+| `make previews` | Uses Poppler `pdftoppm` to render pages 1 and 2 of every PDF at 120 DPI. |
+| `make verify` | Checks expected files, scans LaTeX logs, extracts text with `pdftotext`, confirms active-content markers, and checks that disabled examples are absent. |
+| `make clean` | Removes only the ignored `build/` directory. Committed PDFs and previews remain intact. |
+
+## Edit And Build In Cursor
+
+1. Install MacTeX as described above.
+2. In Cursor Extensions, install **LaTeX Workshop** by James Yu.
+3. Open one of the four `cv.tex` entry files.
+4. Open the LaTeX Workshop command menu and choose **Build LaTeX project**.
+5. Select a `latexmk (xelatex)` or XeLaTeX recipe.
+6. Choose **View LaTeX PDF** to open the result in Cursor.
+
+No repository-specific Cursor settings are required. For the complete four-document pipeline, use `make` in Cursor's integrated terminal.
+
+If Cursor chooses pdfLaTeX, explicitly select the XeLaTeX recipe; the bundled OpenType fonts require XeLaTeX. If output appears stale, run `make clean && make`. Missing font or package errors normally indicate an incomplete MacTeX installation.
+
+## Editing Notes
+
+- Edit English or German section files under `dual-column-cv/<language>/sections/`.
+- Header and contact information are in each layout's `cv.tex`.
+- Keep equivalent active entries in English and German.
+- Do not remove `\iffalse`/`\fi` around disabled examples unless they are intentionally being activated.
+- Text length affects pagination in both layouts, so rebuild and inspect all pages after substantive edits.
+
+The original factual source and permitted corrections are documented in [the validation ledger](docs/content-validation.md).
+
+## Original Template Credits
+
+- The single-column styling is derived from [sb2nov/resume](https://github.com/sb2nov/resume).
+- The dual-column styling is derived from [darwiin/yaac-another-awesome-cv](https://github.com/darwiin/yaac-another-awesome-cv).
+
+This repository is distributed under the [Unlicense](LICENSE). Upstream templates and bundled fonts may retain their own original terms.
